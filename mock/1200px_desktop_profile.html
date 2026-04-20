@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nova - Crew Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-variant": "#353436",
+                      "surface-dim": "#131314",
+                      "primary-container": "#ff4a8d",
+                      "on-tertiary-fixed": "#002021",
+                      "on-secondary-fixed": "#3a0620",
+                      "on-primary-fixed": "#3f001a",
+                      "background": "#131314",
+                      "secondary": "#ffb0cc",
+                      "primary-fixed-dim": "#ffb1c4",
+                      "on-tertiary-fixed-variant": "#004f53",
+                      "primary": "#ffb1c4",
+                      "on-primary-fixed-variant": "#8f0044",
+                      "on-error-container": "#ffdad6",
+                      "tertiary-container": "#00a1a7",
+                      "surface-container-high": "#2a2a2b",
+                      "surface-tint": "#ffb1c4",
+                      "surface-container-low": "#1c1b1c",
+                      "tertiary-fixed": "#63f7ff",
+                      "on-surface-variant": "#e5bcc5",
+                      "inverse-on-surface": "#313031",
+                      "surface-container": "#201f20",
+                      "inverse-primary": "#ba005b",
+                      "on-secondary-container": "#f1a1be",
+                      "on-background": "#e5e2e3",
+                      "on-secondary": "#541c35",
+                      "on-error": "#690005",
+                      "on-surface": "#e5e2e3",
+                      "tertiary-fixed-dim": "#00dce5",
+                      "on-tertiary": "#003739",
+                      "inverse-surface": "#e5e2e3",
+                      "surface-bright": "#3a393a",
+                      "surface": "#131314",
+                      "secondary-container": "#72354e",
+                      "on-tertiary-container": "#002f32",
+                      "surface-container-lowest": "#0e0e0f",
+                      "error-container": "#93000a",
+                      "secondary-fixed-dim": "#ffb0cc",
+                      "surface-container-highest": "#353436",
+                      "on-primary-container": "#590028",
+                      "primary-fixed": "#ffd9e1",
+                      "outline": "#ac878f",
+                      "error": "#ffb4ab",
+                      "tertiary": "#00dce5",
+                      "outline-variant": "#5c3f46",
+                      "on-primary": "#65002e",
+                      "on-secondary-fixed-variant": "#6f334c",
+                      "secondary-fixed": "#ffd9e4"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {},
+              "fontFamily": {
+                      "headline": [
+                              "Space Grotesk"
+                      ],
+                      "body": [
+                              "Inter"
+                      ],
+                      "label": [
+                              "Inter"
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: theme('fontFamily.body');
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: theme('fontFamily.headline');
+        }
+        /* Neon Pulse effects */
+        .neon-glow-primary {
+            box-shadow: 0 0 30px rgba(255, 177, 196, 0.2);
+        }
+        .neon-glow-primary-hover:hover {
+            box-shadow: 0 0 40px rgba(255, 177, 196, 0.4);
+        }
+        .neon-glow-tertiary {
+            box-shadow: 0 4px 10px -2px rgba(0, 220, 229, 0.5);
+        }
+        /* Glassmorphism */
+        .glass-panel {
+            background-color: rgba(28, 27, 28, 0.6);
+            backdrop-filter: blur(20px);
+        }
+        /* Gradient Button */
+        .btn-gradient {
+            background: linear-gradient(135deg, theme('colors.primary'), theme('colors.primary-container'));
+        }
+        /* Ghost Border */
+        .ghost-border {
+            border: 1px solid rgba(92, 63, 70, 0.15); /* outline-variant at 15% */
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col pt-[88px] bg-[#131314] text-[#e5e2e3]"> <!-- Added pt-[88px] to account for fixed navbar height -->
+<!-- TopNavBar from JSON -->
+<nav class="bg-[#131314]/80 backdrop-blur-2xl fixed top-0 w-full z-50 shadow-[0_0_30px_rgba(255,74,141,0.15)]">
+<div class="flex flex-row-reverse justify-between items-center w-full px-12 py-6">
+<!-- Right / Order Last due to flex-row-reverse -->
+<div class="text-2xl font-black text-[#ffb1c4] tracking-widest order-last font-['Space_Grotesk'] uppercase">
+                NEBULA_ROCK
+            </div>
+<!-- Center Navigation Links -->
+<ul class="flex gap-8 items-center font-['Space_Grotesk'] tracking-tighter uppercase text-sm">
+<li>
+<a class="text-zinc-400 font-medium hover:text-white hover:text-[#ffb1c4] hover:scale-105 transition-all duration-300 active:scale-95 cursor-pointer block pb-1" href="#">Tour</a>
+</li>
+<li>
+<!-- Crew is active -->
+<a class="text-[#ffb1c4] border-b border-[#00dce5] pb-1 shadow-[0_4px_10px_-2px_rgba(0,220,229,0.5)] hover:text-[#ffb1c4] hover:scale-105 transition-all duration-300 active:scale-95 cursor-pointer block" href="#">Cosmos</a>
+</li>
+<li>
+<a class="text-zinc-400 font-medium hover:text-white hover:text-[#ffb1c4] hover:scale-105 transition-all duration-300 active:scale-95 cursor-pointer block pb-1" href="#">Transmission</a>
+</li>
+<li>
+<a class="text-zinc-400 font-medium hover:text-white hover:text-[#ffb1c4] hover:scale-105 transition-all duration-300 active:scale-95 cursor-pointer block pb-1" href="#">Vault</a>
+</li>
+</ul>
+<!-- Left / First due to flex-row-reverse -->
+<button class="font-['Space_Grotesk'] tracking-tighter uppercase text-sm font-bold text-[#131314] bg-[#ffb1c4] px-6 py-2 rounded hover:scale-105 transition-all duration-300 active:scale-95 cursor-pointer">
+                Join the Fleet
+            </button>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow container mx-auto px-6 py-12 md:px-12 flex flex-col gap-[2rem]">
+<!-- Hero Section -->
+<section class="relative rounded-xl overflow-hidden glass-panel bg-[#131314]">
+<!-- Background Image -->
+<div class="absolute inset-0 z-0">
+<img alt="Deep space nebula with vibrant pink and teal cosmic dust" class="w-full h-full object-cover opacity-30 mix-blend-screen" data-alt="Deep space nebula background, vibrant pink and teal cosmic dust, glowing stars, cinematic sci-fi lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDt3SJkIDFd0xsW4E0jv1m_i0DbBxHr9SC4Wfx4UOQ7CCDHQveVwoKh2E-B2Dyadkb_-9NVNFtGrx-ki_wG-klvJ7w69GQ8DVWzNrypKGrNN6yhOfA87BQXmtmNzeBYtORhem-8srBA3LecGuxjSI4dTeXPId91frH4In9xRLCfQ4IMo1lEv5MUeThxNYrmryU0ytOBJnPJyS28TYGHJYpE8_frV18cxo6FZ8t4JiWIiymAL2OylMJBHcxNnCr4EzX8fYjRgNwgZNw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#131314] via-[#131314]/50 to-transparent"></div>
+</div>
+<div class="relative z-10 flex flex-col md:flex-row items-center gap-12 p-12">
+<!-- Portrait -->
+<div class="relative group">
+<div class="absolute -inset-1 bg-gradient-to-r from-primary to-tertiary rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+<img alt="Nova, lead singer portrait" class="relative w-64 h-64 md:w-80 md:h-80 object-cover rounded-full border-2 ghost-border shadow-2xl border-[#3a393a] bg-[#131314]" data-alt="Portrait of a female sci-fi rock singer, dramatic pink and blue neon lighting, futuristic cybernetic fashion, intense gaze, dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxoFDtmdeL71s2B2ZflYzdX6cUN3Fx3T0ikn8b41WLW_t2NIucYRcU3te4Dl18xPAYEwreEx60DqqVj-hY4I30oPo7O0v84SZXeFngNhfnkmJ_hSL7zgPQfg7AD9lwIfPasa9qR-hqTF4pefnxUKLu-8wNHdRc64Vp5VRwekiVA1YwQ6LLbrbjM218cx8a1_KDN3NWE8gFwpQMc051iCjQxZ10jxIFhsDQeBqNmUXQKQEj6vIPsMTjw_Le7x2z67POkSv4BnerRRU"/>
+</div>
+<!-- Info -->
+<div class="flex-1 space-y-6 text-center md:text-left">
+<div>
+<div class="flex items-center justify-center md:justify-start gap-4 mb-2">
+<span class="text-[#ffb1c4] font-headline tracking-widest text-sm uppercase">Lead Vocals</span>
+<span class="w-12 h-px bg-[#353436]"></span>
+<span class="text-[#e5bcc5] text-sm font-label flex items-center gap-1">
+<span class="text-[#ffb1c4] font-headline tracking-widest text-sm uppercase">location_on</span>
+                                Orion Alpha Base
+                            </span>
+</div>
+<h1 class="text-6xl md:text-7xl font-bold font-headline tracking-tighter uppercase mb-2 text-white">
+                            Nova
+                        </h1>
+<p class="text-xl font-light font-body max-w-2xl text-zinc-400">
+                            "The void is silent, but we make it scream."
+                        </p>
+</div>
+<div class="flex flex-wrap items-center justify-center md:justify-start gap-8 pt-4">
+<div class="flex flex-col">
+<span class="text-[#e5bcc5] text-xs uppercase tracking-wider mb-1 font-label">Age / Cycles</span>
+<span class="text-2xl font-bold font-headline text-[#e5e2e3]">28</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[#e5bcc5] text-xs uppercase tracking-wider mb-1 font-label">Status</span>
+<span class="text-lg font-medium text-[#00dce5] flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-[#00dce5] shadow-[0_0_8px_#00dce5]"></span>
+                                Active
+                            </span>
+</div>
+</div>
+<div class="pt-6">
+<button class="btn-gradient text-[#3f001a] font-headline font-bold uppercase tracking-wider px-8 py-4 rounded hover:scale-105 transition-all duration-300 neon-glow-primary-hover flex items-center gap-2 mx-auto md:mx-0">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">cell_tower</span>
+                            Connect Comms
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Interactive Sections (Bento-style layout instead of pure accordions for a more premium look) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-[2rem]">
+<!-- Technical Proficiencies -->
+<section class="bg-[#0e0e0f] rounded-xl p-8 relative overflow-hidden group hover:bg-[#201f20] transition-colors duration-500">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-[#ffb1c4] opacity-50 group-hover:opacity-100 transition-opacity"></div>
+<h2 class="text-2xl font-headline font-bold text-[#e5e2e3] uppercase tracking-tight mb-6 flex items-center gap-3">
+<span class="material-symbols-outlined text-[#00dce5]">psychology</span>
+                    Habilidades
+                </h2>
+<div class="flex flex-wrap gap-3">
+<span class="px-3 py-1 bg-[#201f20] border border-[#ffb1c4]/20 rounded text-[#ffb1c4] text-sm font-label tracking-wide uppercase shadow-[0_0_10px_rgba(255,177,196,0.1)]">Vocal Synthesis</span>
+<span class="px-3 py-1 bg-[#201f20] border border-[#ffb1c4]/20 rounded text-[#ffb1c4] text-sm font-label tracking-wide uppercase shadow-[0_0_10px_rgba(255,177,196,0.1)]">Atmospheric Control</span>
+<span class="px-3 py-1 bg-[#201f20] border border-[#ffb1c4]/20 rounded text-[#ffb1c4] text-sm font-label tracking-wide uppercase shadow-[0_0_10px_rgba(255,177,196,0.1)]">Zero-G Performance</span>
+<span class="px-3 py-1 bg-[#201f20] ghost-border rounded text-[#e5bcc5] text-sm font-label tracking-wide uppercase">Crowd Manipulation</span>
+<span class="px-3 py-1 bg-[#201f20] ghost-border rounded text-[#e5bcc5] text-sm font-label tracking-wide uppercase">Sonic Weaponry</span>
+</div>
+</section>
+<!-- Archived Visual Media -->
+<section class="bg-[#0e0e0f] rounded-xl p-8 relative overflow-hidden group hover:bg-[#201f20] transition-colors duration-500">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-[#00dce5] opacity-50 group-hover:opacity-100 transition-opacity"></div>
+<h2 class="text-2xl font-headline font-bold text-[#e5e2e3] uppercase tracking-tight mb-6 flex items-center gap-3">
+<span class="material-symbols-outlined text-[#00dce5]">movie</span>
+                    Películas favoritas
+                </h2>
+<ul class="space-y-4">
+<li class="flex items-start gap-4">
+<div class="w-12 h-16 bg-[#2a2a2b] rounded overflow-hidden flex-shrink-0 ghost-border">
+<img alt="Blade Runner aesthetics" class="w-full h-full object-cover opacity-80" data-alt="Dark cyberpunk cityscape at night, neon reflections in puddles, cinematic film still" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-Iksw2rrB24TJHPdEUfkMrD0Nm3Sg7q3WVoQzJ2jggJnVvNvssPyVdl_1g_YH0ky-Y4dMipg2SlkHzET40kDO8f0B83ppYhP3bX1ylqE9xLUrfmfpw7Jfc634c4YfzHvaTA8jZdNzjAiDXGLUGm4gNZvxIE_1WB8X_RAmduiaSueFOSOxyepkH1GN6v93ZONwglKsuZl_oSrPXsxYg8yvBv1cDSs49nS8clNbTnyjGo2nf4-WP65k0pDm81vlle1TFWOwPyeHxd4"/>
+</div>
+<div>
+<h3 class="font-headline font-bold text-[#e5e2e3] text-lg leading-tight">Neon Echoes</h3>
+<p class="text-xs font-label mt-1 text-[#e5bcc5]">Dir. Kael Vora, 2084</p>
+</div>
+</li>
+<li class="flex items-start gap-4">
+<div class="w-12 h-16 bg-[#2a2a2b] rounded overflow-hidden flex-shrink-0 ghost-border">
+<img alt="Space aesthetics" class="w-full h-full object-cover opacity-80" data-alt="Earth seen from orbit, bright blue atmosphere against black space, cinematic view" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVXtXS3_MLC-9HFeZIdzibGS1cFj1raE8MqPuLYu0boXmhA9oFqNjxlXNybpETzln4TiV10Y2TiS4YxsTW3uGSsx-qt8bzAlWJ8p9B-poOyaOE_zDBZiFwd-76vCkTE9QYKfmqykEozaaVT199NRfXAsTetPnOdaieakrY__0McHoy8lz8hlvQZoYFlkINh9DKiumcn6LWmS7YJ5yIFI4PgQ3ZObAoxjOiL188gPA0rFF2zImvfI6rIOKZHA0EplWTyt7vEbGf7b0"/>
+</div>
+<div>
+<h3 class="font-headline font-bold text-[#e5e2e3] text-lg leading-tight">The Silence Between</h3>
+<p class="text-xs font-label mt-1 text-[#e5bcc5]">Dir. Aria Sol, 2091</p>
+</div>
+</li>
+</ul>
+</section>
+<!-- Sonic Influences -->
+<section class="bg-[#0e0e0f] rounded-xl p-8 relative overflow-hidden group hover:bg-[#201f20] transition-colors duration-500">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-[#ff4a8d] opacity-50 group-hover:opacity-100 transition-opacity"></div>
+<h2 class="text-2xl font-headline font-bold text-[#e5e2e3] uppercase tracking-tight mb-6 flex items-center gap-3">
+<span class="material-symbols-outlined text-[#00dce5]">album</span>
+                    Discos musicales
+                </h2>
+<div class="grid grid-cols-2 gap-4">
+<div class="group/album relative">
+<div class="aspect-square bg-[#2a2a2b] rounded overflow-hidden ghost-border relative">
+<img alt="Abstract album cover" class="w-full h-full object-cover group-hover/album:scale-110 transition-transform duration-500" data-alt="Abstract 3D rendering of floating geometric shapes in deep violet and magenta space" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxoEKfY9N_Mji3EQ9mAJrqlJZLmbuN0EXr4SJXJmQtCn109Y4pgiQeHARfiFM07891ju1kMultAxh8TnSOoRHqzfeRoKHBic0AmJY45KYiDUx-oWr2CWABTRoyHR7AV2CuZ8uo55aZSWJKUPBo64nMft_-qGl3wi8UadSVOO9XuI7POseQDB5U8-OcStg1buZYcwawWgt0bKc81jdfwlax-UHxg3F_YVT_n3jzQUJo6fCz9I2Og5xYlM0c53NMIrIAs1JDmBmr5hM"/>
+<div class="absolute inset-0 bg-[#131314]/80 flex items-center justify-center opacity-0 group-hover/album:opacity-100 transition-opacity duration-300">
+<span class="material-symbols-outlined text-[#ffb1c4]" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+<p class="text-sm font-headline font-medium text-[#e5e2e3] mt-2 truncate">Quantum Lullabies</p>
+<p class="text-xs truncate text-[#e5bcc5]">The Pulsars</p>
+</div>
+<div class="group/album relative">
+<div class="aspect-square bg-[#2a2a2b] rounded overflow-hidden ghost-border relative">
+<img alt="Abstract album cover" class="w-full h-full object-cover group-hover/album:scale-110 transition-transform duration-500" data-alt="Fluid liquid metal texture flowing with iridescent colors, dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_B_3_uomc3_ldXfQ-61BFnv4Np8Gj3tEwkfJ7K8fLaB7BR1IbIKFaO8imSKRicFZEoVFGNCR05qATwNgAgQa6kZyUeSBCP7RpkrNc_WeUoMKOK-iyxc_1UouA0M81XpgwS631Ibvz04RhZX7-XdpU2eBuVcsDEkJMCDoBCP-HfaV9vzS1e850mZnWd4yxFwIJf5tCeh3TDDRaNvtbldxhAzGmJAy8XRygygncSsJTeZx4bBilFzFjuWFqthxPZSu5ITftzl8ahGo"/>
+<div class="absolute inset-0 bg-[#131314]/80 flex items-center justify-center opacity-0 group-hover/album:opacity-100 transition-opacity duration-300">
+<span class="material-symbols-outlined text-[#ffb1c4]" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+<p class="text-sm font-headline font-medium text-[#e5e2e3] mt-2 truncate">Static &amp; Void</p>
+<p class="text-xs truncate text-[#e5bcc5]">Nebula Rust</p>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer from JSON -->
+<footer class="bg-[#131314] w-full py-12 mt-auto border-t border-white/5 tonal shift via surface-container-lowest flat no shadows">
+<div class="flex flex-col items-center gap-8 px-8 w-full">
+<!-- Brand Logo -->
+<div class="font-bold text-[#00dce5] font-['Space_Grotesk'] tracking-widest text-xl">
+                &lt; ROCKBAND.dev /&gt;
+            </div>
+<!-- Links -->
+<ul class="flex flex-wrap justify-center gap-6 font-['Space_Grotesk'] text-xs tracking-widest uppercase">
+<li><a class="text-zinc-600 hover:text-[#ff4a8d] transition-colors ease-in-out duration-500" href="#">Privacy Protocol</a></li>
+<li><a class="text-zinc-600 hover:text-[#ff4a8d] transition-colors ease-in-out duration-500" href="#">Sector Terms</a></li>
+<li><a class="text-zinc-600 hover:text-[#ff4a8d] transition-colors ease-in-out duration-500" href="#">Contact Command</a></li>
+</ul>
+<!-- Copyright -->
+<p class="text-zinc-600 font-['Space_Grotesk'] text-xs tracking-widest uppercase text-center mt-4">
+                © 3024 INTERSTELLAR STAGE RECORDS. ALL FREQUENCIES RESERVED.
+            </p>
+</div>
+</footer>
+</body></html>

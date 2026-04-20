@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Member Profile - Interstellar Stage</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700;900&amp;family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#131314",
+                        "surface-container-low": "#1c1b1c",
+                        "error": "#ffb4ab",
+                        "primary-fixed": "#ffd9e1",
+                        "on-surface": "#e5e2e3",
+                        "on-tertiary-fixed": "#002021",
+                        "on-error": "#690005",
+                        "inverse-surface": "#e5e2e3",
+                        "on-primary-container": "#590028",
+                        "surface-container-highest": "#353436",
+                        "on-secondary-container": "#f1a1be",
+                        "surface-variant": "#353436",
+                        "on-background": "#e5e2e3",
+                        "secondary-fixed": "#ffd9e4",
+                        "on-tertiary-container": "#002f32",
+                        "outline": "#ac878f",
+                        "on-tertiary": "#003739",
+                        "surface-dim": "#131314",
+                        "error-container": "#93000a",
+                        "surface-bright": "#3a393a",
+                        "surface-tint": "#ffb1c4",
+                        "on-primary": "#65002e",
+                        "secondary-fixed-dim": "#ffb0cc",
+                        "on-primary-fixed-variant": "#8f0044",
+                        "secondary-container": "#72354e",
+                        "on-secondary": "#541c35",
+                        "tertiary": "#00dce5",
+                        "outline-variant": "#5c3f46",
+                        "primary-container": "#ff4a8d",
+                        "tertiary-fixed-dim": "#00dce5",
+                        "on-tertiary-fixed-variant": "#004f53",
+                        "tertiary-fixed": "#63f7ff",
+                        "secondary": "#ffb0cc",
+                        "on-error-container": "#ffdad6",
+                        "surface-container": "#201f20",
+                        "surface-container-high": "#2a2a2b",
+                        "inverse-on-surface": "#313031",
+                        "primary-fixed-dim": "#ffb1c4",
+                        "on-primary-fixed": "#3f001a",
+                        "on-surface-variant": "#e5bcc5",
+                        "on-secondary-fixed": "#3a0620",
+                        "surface-container-lowest": "#0e0e0f",
+                        "tertiary-container": "#00a1a7",
+                        "inverse-primary": "#ba005b",
+                        "surface": "#131314",
+                        "primary": "#ffb1c4",
+                        "on-secondary-fixed-variant": "#6f334c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {},
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .neon-pulse {
+            box-shadow: 0 0 20px rgba(255, 177, 196, 0.2);
+        }
+        .neon-text-pulse {
+            text-shadow: 0 0 10px rgba(255, 177, 196, 0.5);
+        }
+        .glass-panel {
+            background-color: rgba(28, 27, 28, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .accordion-item input:checked ~ .accordion-content {
+            max-height: 500px; /* Arbitrary large value */
+        }
+        .accordion-item input:checked ~ .accordion-header .icon-rotate {
+            transform: rotate(180deg);
+        }
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #131314; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #353436; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ffb1c4; 
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top Navigation (Shell suppressed based on prompt, but keeping the visual back button as requested) -->
+<header class="fixed top-0 w-full z-50 bg-[#131314]/70 backdrop-blur-xl flex items-center px-6 py-4 shadow-[0_0_20px_rgba(255,74,141,0.2)] bg-[#131314] justify-start">
+<a class="text-[#ffb1c4] hover:text-[#00dce5] transition-colors duration-300 active:scale-95 flex items-center gap-4 font-headline uppercase font-bold text-sm tracking-widest" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+<span class="text-on-surface">Interstellar Stage</span>
+</a>
+</header>
+<!-- Main Content Area -->
+<main class="flex-grow pt-24 pb-32 px-4 md:px-8 max-w-5xl mx-auto w-full relative z-10">
+<!-- Hero Section: Avatar & Info -->
+<section class="relative flex flex-col md:flex-row items-center md:items-start gap-8 mb-16 pt-8">
+<!-- Decorative Background Element -->
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-[120%] h-[120%] bg-gradient-to-br from-primary/5 to-tertiary/5 blur-3xl -z-10 rounded-full pointer-events-none"></div>
+<!-- Avatar Container -->
+<div class="relative group">
+<div class="absolute inset-0 bg-gradient-to-br from-primary to-primary-container rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl pointer-events-none"></div>
+<div class="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-2 border-outline-variant/15 relative z-10 glass-panel p-2">
+<img alt="Cyberpunk Musician Profile" class="w-full h-full object-cover rounded-full grayscale hover:grayscale-0 transition-all duration-500" data-alt="Portrait of a futuristic sci-fi musician with neon pink and cyan cybernetic implants, dramatic dark stage lighting, highly detailed face" src="https://lh3.googleusercontent.com/aida-public/AB6AXuASmtJrxWqUCYqm8q9lxahPOfC3Bp9esadQr7YvIuduaHWW2ZQxBj8KMmAtSnSeRBlkaAcu-xUu31pPFm7AfFX6wVwcXuZJyUi9R35ODPti7QUsz68bt9buhNwl7YCltGiZn1sBAY49aoHvskxzfJzG0ymEL11K5fkReCiuW1BhadoCGN_FeF8O1nZcezDVDLbmKJWA49xWw0l0I3Q6EXKEDg7N18hZJAZuWG4cCtDZ4OV3Mkg8G0QDRmOF92RD2Nk6Im-1zKZ-QLg"/>
+</div>
+<!-- Status Badge -->
+<div class="absolute bottom-4 right-4 bg-surface-container-lowest border border-outline-variant/30 text-tertiary px-3 py-1 rounded font-headline text-xs tracking-widest uppercase flex items-center gap-1 z-20 shadow-lg backdrop-blur-sm">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+                    Online
+                </div>
+</div>
+<!-- Data Panel -->
+<div class="flex flex-col justify-center text-center md:text-left flex-grow space-y-4 w-full">
+<div>
+<h1 class="font-headline text-5xl md:text-6xl font-black text-on-surface tracking-tighter uppercase neon-text-pulse mb-1">
+                        Zeta<span class="text-primary">"Vox"</span>Prime
+                    </h1>
+<p class="font-body text-tertiary text-sm md:text-base tracking-widest uppercase flex items-center justify-center md:justify-start gap-2">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">planet</span>
+                        Base Alpha, Kepler-452b
+                    </p>
+</div>
+<div class="glass-panel rounded-lg p-6 border border-outline-variant/15 flex flex-wrap gap-6 justify-center md:justify-start relative overflow-hidden">
+<!-- Accent Line -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-primary to-primary-container"></div>
+<div class="flex flex-col">
+<span class="font-body text-xs text-on-surface-variant uppercase tracking-widest mb-1">Age Cycle</span>
+<span class="font-headline text-2xl text-on-surface font-bold">142<span class="text-sm text-on-surface-variant font-normal">.y</span></span>
+</div>
+<div class="w-px bg-outline-variant/30 hidden md:block"></div>
+<div class="flex flex-col">
+<span class="font-body text-xs text-on-surface-variant uppercase tracking-widest mb-1">Primary Instrument</span>
+<span class="font-headline text-2xl text-on-surface font-bold">Plasma Synth</span>
+</div>
+<div class="w-px bg-outline-variant/30 hidden md:block"></div>
+<div class="flex flex-col">
+<span class="font-body text-xs text-on-surface-variant uppercase tracking-widest mb-1">Stage Role</span>
+<span class="font-headline text-2xl text-on-surface font-bold">Lead Harmony</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Details Section: Accordions (Bento Grid Layout) -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Habilidades (Skills) -->
+<div class="accordion-item relative bg-surface-container-low rounded-lg border border-outline-variant/15 overflow-hidden group">
+<input checked="" class="peer hidden" id="skills" type="checkbox"/>
+<label class="accordion-header cursor-pointer flex items-center justify-between p-6 bg-surface-container hover:bg-surface-container-high transition-colors z-10 relative" for="skills">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 0;">psychiatry</span>
+<h2 class="font-headline text-xl font-bold uppercase tracking-tight text-on-surface">Habilidades</h2>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant icon-rotate transition-transform duration-300">expand_more</span>
+</label>
+<div class="accordion-content bg-surface-container-lowest px-6 peer-checked:py-6">
+<ul class="space-y-4">
+<li class="flex items-center gap-4">
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
+<div class="bg-gradient-to-r from-primary to-primary-container h-full w-[95%] shadow-[0_0_10px_rgba(255,74,141,0.5)]"></div>
+</div>
+<span class="font-body text-sm font-medium w-32 shrink-0 text-right">Acoustic Manipulation</span>
+</li>
+<li class="flex items-center gap-4">
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
+<div class="bg-gradient-to-r from-tertiary to-tertiary-fixed h-full w-[80%] shadow-[0_0_10px_rgba(0,220,229,0.5)]"></div>
+</div>
+<span class="font-body text-sm font-medium w-32 shrink-0 text-right">Zero-G Acrobatics</span>
+</li>
+<li class="flex items-center gap-4">
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
+<div class="bg-gradient-to-r from-primary to-primary-container h-full w-[88%] shadow-[0_0_10px_rgba(255,74,141,0.5)]"></div>
+</div>
+<span class="font-body text-sm font-medium w-32 shrink-0 text-right">Telepathic Sync</span>
+</li>
+<li class="flex items-center gap-4">
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
+<div class="bg-gradient-to-r from-tertiary to-tertiary-fixed h-full w-[70%] shadow-[0_0_10px_rgba(0,220,229,0.5)]"></div>
+</div>
+<span class="font-body text-sm font-medium w-32 shrink-0 text-right">Hyper-Speed Tuning</span>
+</li>
+</ul>
+</div>
+<!-- Signature Accent -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary hidden peer-checked:block"></div>
+</div>
+<div class="space-y-8">
+<!-- Películas Favoritas -->
+<div class="accordion-item relative bg-surface-container-low rounded-lg border border-outline-variant/15 overflow-hidden">
+<input class="peer hidden" id="movies" type="checkbox"/>
+<label class="accordion-header cursor-pointer flex items-center justify-between p-6 bg-surface-container hover:bg-surface-container-high transition-colors z-10 relative" for="movies">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 0;">movie</span>
+<h2 class="font-headline text-xl font-bold uppercase tracking-tight text-on-surface">Películas Favoritas</h2>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant icon-rotate transition-transform duration-300">expand_more</span>
+</label>
+<div class="accordion-content bg-surface-container-lowest px-6 peer-checked:py-6">
+<ul class="space-y-3">
+<li class="flex flex-col border-b border-outline-variant/10 pb-2">
+<span class="font-headline text-lg font-bold text-on-surface">Blade Runner 2049</span>
+<span class="font-body text-xs text-on-surface-variant">Visual inspiration for Stage 4.</span>
+</li>
+<li class="flex flex-col border-b border-outline-variant/10 pb-2">
+<span class="font-headline text-lg font-bold text-on-surface">Interstellar</span>
+<span class="font-body text-xs text-on-surface-variant">The physics of sound design.</span>
+</li>
+<li class="flex flex-col">
+<span class="font-headline text-lg font-bold text-on-surface">Dune: Part Two</span>
+<span class="font-body text-xs text-on-surface-variant">Scale and sonic atmosphere.</span>
+</li>
+</ul>
+</div>
+<!-- Signature Accent -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-tertiary hidden peer-checked:block"></div>
+</div>
+<!-- Discos Musicales Favoritos -->
+<div class="accordion-item relative bg-surface-container-low rounded-lg border border-outline-variant/15 overflow-hidden">
+<input class="peer hidden" id="albums" type="checkbox"/>
+<label class="accordion-header cursor-pointer flex items-center justify-between p-6 bg-surface-container hover:bg-surface-container-high transition-colors z-10 relative" for="albums">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 0;">album</span>
+<h2 class="font-headline text-xl font-bold uppercase tracking-tight text-on-surface">Discos Favoritos</h2>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant icon-rotate transition-transform duration-300">expand_more</span>
+</label>
+<div class="accordion-content bg-surface-container-lowest px-6 peer-checked:py-6">
+<div class="grid grid-cols-1 gap-4">
+<!-- Album Card 1 -->
+<div class="flex items-center gap-4 bg-surface p-3 rounded border border-outline-variant/10">
+<div class="w-12 h-12 rounded bg-surface-container-high flex-shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant" style="font-variation-settings: 'FILL' 0;">graphic_eq</span>
+</div>
+<div>
+<h3 class="font-headline font-bold text-on-surface text-sm">Dark Side of the Moonbase</h3>
+<p class="font-body text-xs text-on-surface-variant">Pink Void</p>
+</div>
+</div>
+<!-- Album Card 2 -->
+<div class="flex items-center gap-4 bg-surface p-3 rounded border border-outline-variant/10">
+<div class="w-12 h-12 rounded bg-surface-container-high flex-shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant" style="font-variation-settings: 'FILL' 0;">graphic_eq</span>
+</div>
+<div>
+<h3 class="font-headline font-bold text-on-surface text-sm">Neon Nights in Neo-Tokyo</h3>
+<p class="font-body text-xs text-on-surface-variant">The Synthweavers</p>
+</div>
+</div>
+<!-- Album Card 3 -->
+<div class="flex items-center gap-4 bg-surface p-3 rounded border border-outline-variant/10">
+<div class="w-12 h-12 rounded bg-surface-container-high flex-shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant" style="font-variation-settings: 'FILL' 0;">graphic_eq</span>
+</div>
+<div>
+<h3 class="font-headline font-bold text-on-surface text-sm">Pulse of the Quasar</h3>
+<p class="font-body text-xs text-on-surface-variant">DJ Supernova</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Signature Accent -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary-container hidden peer-checked:block"></div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Shell (JSON Component Implementation - Suppressed on Desktop, Visible on Mobile as per typical mobile nav patterns, though prompt asked for a 'Back' button fixed to bottom. Merging concepts.) -->
+<!-- Note: Following semantic shell rules, a specific profile might suppress the global nav, but user explicitly asked for a fixed bottom bar with a back button. I will implement a hybrid specific to this screen's needs. -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-2 bg-[#131314]/70 backdrop-blur-xl z-50 shadow-[0_-4px_30px_rgba(255,74,141,0.15)] border-t border-white/15 md:hidden">
+<a class="flex flex-col items-center justify-center text-[#ffb1c4] pt-2 hover:text-[#ffb1c4] transition-all active:scale-110 duration-200 w-full text-center group" href="#">
+<span class="material-symbols-outlined mb-1 group-hover:text-tertiary transition-colors" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+<span class="font-['Space_Grotesk'] text-[10px] uppercase font-bold tracking-tighter">Return Home</span>
+</a>
+</nav>
+<!-- Desktop Return FAB (Alternative to bottom nav for desktop) -->
+<div class="fixed bottom-8 left-8 hidden md:block z-50">
+<a class="bg-surface-container-high border border-outline-variant/30 hover:border-primary/50 text-on-surface hover:text-primary rounded-full w-14 h-14 flex items-center justify-center shadow-lg transition-all duration-300 group neon-pulse" href="#">
+<span class="material-symbols-outlined group-hover:-translate-x-1 transition-transform" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</a>
+</div>
+</body></html>

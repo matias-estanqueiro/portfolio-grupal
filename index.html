@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interstellar RockBand | Inicio</title>
+    <meta name="description" content="Embárcate en un viaje sonoro por el cosmos con Interstellar RockBand. Descubre a nuestra tripulación y únete a nuestra gira galáctica de rock y synth." />
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Space+Grotesk:wght@400;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+    <header class="header">
+        <div class="header__brand">&lt; ROCKBAND.dev /&gt;</div>
+        <nav class="header__nav">
+            <a href="index.html" style="color: var(--tertiary); border-bottom: 2px solid var(--tertiary);">Home</a>
+            <a href="bitacora.html">Bitácora</a>
+            <a href="#crew">Tripulación</a>
+        </nav>
+        <button class="btn btn--primary header__btn">Unirse a la Flota</button>
+    </header>
+
+    <main class="container" style="padding-top: 100px; padding-bottom: 80px;">
+        <section class="hero" style="text-align: center; margin-bottom: 4rem;">
+            <h1 class="hero__title font-headline" style="font-size: clamp(3rem, 8vw, 6rem); color: var(--primary); text-shadow: 0 0 20px rgba(255,177,196,0.3); margin-bottom: 1rem;">
+                Interstellar<br>RockBand
+            </h1>
+            <p style="color: var(--on-surface-variant); max-width: 600px; margin: 0 auto 2rem auto; line-height: 1.6;">
+                Preparate para un viaje sónico a través del cosmos. Combinamos energía pura con frecuencias celestiales, convirtiendo cada escenario en una supernova.
+            </p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <button class="btn btn--primary">Engage Thrusters</button>
+                <a href="bitacora.html" class="btn btn--outline">Ver Bitácora</a>
+            </div>
+        </section>
+
+        <section id="crew" class="crew">
+            <h2 class="font-headline" style="font-size: 2rem; margin-bottom: 2rem; border-left: 4px solid var(--primary); padding-left: 1rem;">The Crew</h2>
+            
+            <div class="grid-3">
+                <article class="crew-card" style="background: var(--surface-low); border: 1px solid var(--outline-variant); border-radius: 8px; overflow: hidden; margin-bottom: 2rem;">
+                    <img src="img/nova.jpg" alt="Nova, cantante principal" style="width: 100%; aspect-ratio: 3/4; object-fit: cover;">
+                    <div style="padding: 1.5rem; text-align: center;">
+                        <a href="profile.html" class="btn btn--outline" style="display: block; width: 100%;">NOVA - LEAD VOX</a>
+                    </div>
+                </article>
+                
+                <article class="crew-card" style="background: var(--surface-low); border: 1px solid var(--outline-variant); border-radius: 8px; overflow: hidden; margin-bottom: 2rem;">
+                    <img src="img/zane.jpg" alt="Zane, guitarrista principal" style="width: 100%; aspect-ratio: 3/4; object-fit: cover;">
+                    <div style="padding: 1.5rem; text-align: center;">
+                        <a href="profile.html" class="btn btn--outline" style="display: block; width: 100%;">ZANE - LEAD GUITAR</a>
+                    </div>
+                </article>
+
+                <article class="crew-card" style="background: var(--surface-low); border: 1px solid var(--outline-variant); border-radius: 8px; overflow: hidden; margin-bottom: 2rem;">
+                    <img src="img/orion.jpg" alt="Orion, baterista" style="width: 100%; aspect-ratio: 3/4; object-fit: cover;">
+                    <div style="padding: 1.5rem; text-align: center;">
+                        <a href="profile.html" class="btn btn--outline" style="display: block; width: 100%;">ORION - DRUMS</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <nav class="nav-mobile">
+        <a href="index.html" class="nav-mobile__item nav-mobile__item--active">
+            <i class="fa-solid fa-rocket"></i> Inicio
+        </a>
+        <a href="bitacora.html" class="nav-mobile__item">
+            <i class="fa-solid fa-book-journal-whills"></i> Bitácora
+        </a>
+        <a href="#crew" class="nav-mobile__item">
+            <i class="fa-solid fa-users"></i> Tripulación
+        </a>
+    </nav>
+</body>
+</html>

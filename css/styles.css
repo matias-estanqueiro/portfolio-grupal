@@ -1,0 +1,358 @@
+/* =========================================
+   VARIABLES Y TOKENS (Extraídos del Mockup)
+   ========================================= */
+:root {
+  --bg-color: #131314;
+  --surface-low: #1c1b1c;
+  --surface-high: #2a2a2b;
+  --primary: #ffb1c4;
+  --primary-container: #ff4a8d;
+  --tertiary: #00dce5;
+  --on-surface: #e5e2e3;
+  --on-surface-variant: #e5bcc5;
+  --outline-variant: rgba(92, 63, 70, 0.15);
+  
+  --font-headline: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+/* =========================================
+   RESETEO BASE Y TIPOGRAFÍA
+   ========================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--on-surface);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1, h2, h3, .font-headline {
+  font-family: var(--font-headline);
+  text-transform: uppercase;
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+/* Contenedor Global con padding responsivo */
+.container {
+  padding: 0 1rem;
+}
+
+/* =========================================
+   COMPONENTES BEM
+   ========================================= */
+
+/* --- Navegación --- */
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(19, 19, 20, 0.8);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--outline-variant);
+  z-index: 50;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+}
+
+.header__brand {
+  color: var(--primary);
+  font-weight: 900;
+  font-size: 1.25rem;
+  letter-spacing: 0.1em;
+}
+
+.header__nav { display: none; }
+.header__btn { display: none; }
+
+/* Menú Mobile Bottom */
+.nav-mobile {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: rgba(19, 19, 20, 0.9);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid var(--outline-variant);
+  display: flex;
+  justify-content: space-around;
+  padding: 0.5rem 1rem 1.5rem 1rem;
+  z-index: 50;
+}
+
+.nav-mobile__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--on-surface-variant);
+  font-size: 0.65rem;
+  font-family: var(--font-headline);
+  font-weight: bold;
+}
+.nav-mobile__item--active { color: var(--primary); }
+.nav-mobile__item i { font-size: 1.2rem; margin-bottom: 4px; }
+
+/* --- Botones --- */
+.btn {
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-headline);
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+.btn--primary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-container));
+  color: #3f001a;
+  box-shadow: 0 0 15px rgba(255, 177, 196, 0.2);
+}
+.btn--primary:hover { box-shadow: 0 0 25px rgba(255, 177, 196, 0.5); }
+.btn--outline {
+  background: transparent;
+  border: 1px solid var(--outline-variant);
+  color: var(--on-surface);
+}
+
+/* --- Acordeones Híbridos (Checkbox Hack) --- */
+.accordion {
+  background: var(--surface-low);
+  border: 1px solid var(--outline-variant);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.accordion__toggle { display: none; }
+
+.accordion__header {
+  padding: 1.5rem;
+  font-family: var(--font-headline);
+  font-weight: bold;
+  font-size: 1.25rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.3s ease;
+}
+.accordion__header:hover { background: var(--surface-high); }
+
+.accordion__title { display: flex; align-items: center; gap: 1rem; }
+
+.accordion__arrow {
+  color: var(--on-surface-variant);
+  transition: transform 0.3s ease;
+}
+
+.accordion__content {
+  padding: 0 1.5rem;
+  max-height: 0; 
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border-left: 4px solid var(--primary);
+}
+
+.accordion__toggle:checked ~ .accordion__content {
+  max-height: 1000px;
+  opacity: 1;
+  padding-bottom: 1.5rem;
+}
+.accordion__toggle:checked ~ .accordion__header .accordion__arrow {
+  transform: rotate(180deg);
+}
+
+/* --- Barras de Progreso --- */
+.progress-bar {
+  width: 100%; height: 6px; background: var(--bg-color);
+  border-radius: 4px; overflow: hidden; margin-top: 0.5rem;
+}
+.progress-bar__fill {
+  height: 100%; background: linear-gradient(90deg, var(--primary), var(--tertiary));
+  border-radius: 4px; box-shadow: 0 0 10px rgba(255,177,196,0.5);
+}
+
+/* --- LÍNEA DE TIEMPO (BITÁCORA) --- */
+.timeline-container { padding: 2rem 0; width: 100%; }
+.timeline { position: relative; width: 100%; }
+.timeline__line {
+  position: absolute; left: 20px; top: 0; bottom: 0; width: 2px;
+  background: linear-gradient(to bottom, var(--primary), var(--tertiary));
+  box-shadow: 0 0 10px rgba(255,177,196,0.5); z-index: 1;
+}
+.timeline__track { display: flex; flex-direction: column; gap: 3rem; }
+.timeline__node { position: relative; padding-left: 60px; width: 100%; }
+.timeline__marker {
+  position: absolute; left: 0; top: 0; width: 40px; height: 40px; border-radius: 50%;
+  background: var(--bg-color); border: 2px solid var(--primary); display: flex;
+  align-items: center; justify-content: center; color: var(--primary); z-index: 2;
+  box-shadow: 0 0 15px rgba(255,177,196,0.3);
+}
+.timeline__card {
+  background: var(--surface-low); padding: 1.5rem; border-radius: 8px;
+  border: 1px solid var(--outline-variant); transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.timeline__card:hover { transform: translateY(-5px); box-shadow: 0 5px 20px rgba(255,74,141,0.2); border-left: 2px solid var(--primary); }
+
+/* --- PROFILE HERO (Híbrido Tablet/Desktop) --- */
+.profile-hero {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3rem;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.profile-hero__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-hero__image-container {
+  width: 100%;
+  aspect-ratio: 16/9;
+}
+
+.profile-hero__info-container {
+  padding: 1.5rem;
+  background: var(--surface-low);
+  width: 100%;
+}
+
+.profile-hero__extra-info {
+  display: none;
+  margin-top: 1rem;
+  border-top: 1px solid var(--outline-variant);
+  padding-top: 1rem;
+}
+
+/* =========================================
+   BREAKPOINTS (Responsive Design)
+   ========================================= */
+
+/* Mobile Grande */
+@media (min-width: 400px) {
+  .hero__title { font-size: 3rem; }
+}
+
+/* Tablet (900px) */
+@media (min-width: 900px) {
+  .container { padding: 0 2rem; }
+
+  .nav-mobile { display: none; }
+  .header__nav {
+    display: flex; gap: 2rem; font-family: var(--font-headline); font-size: 0.85rem; text-transform: uppercase;
+  }
+  .header__nav a:hover { color: var(--primary); }
+  .header__btn { display: block; }
+  
+  .grid-3 {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; align-items: start;
+  }
+
+  .accordion__content {
+    max-height: none; opacity: 1; padding-bottom: 1.5rem; overflow: visible;
+  }
+  .accordion__header { pointer-events: none; }
+  .accordion__arrow { display: none; }
+  .accordion__header:hover { background: transparent; }
+
+  /* Timeline Tablet */
+  .timeline__line { left: 50%; transform: translateX(-50%); }
+  .timeline__node { padding-left: 0; display: flex; justify-content: space-between; align-items: flex-start; }
+  .timeline__node:nth-child(odd) { flex-direction: row-reverse; }
+  .timeline__card { width: 45%; }
+  .timeline__marker { left: 50%; transform: translateX(-50%); }
+
+  /* --- Profile Tablet (Imagen completa y texto encima) --- */
+  .profile-hero {
+    position: relative;
+    border: 1px solid var(--outline-variant);
+  }
+
+  /* CORRECCIÓN: Se elimina el position: absolute para que la imagen le dé altura al contenedor padre */
+  .profile-hero__image-container {
+    width: 100%;
+    aspect-ratio: 16/9;
+  }
+
+  .profile-hero__info-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+    background: rgba(42, 42, 43, 0.8);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid var(--outline-variant);
+  }
+}
+
+/* Desktop (1200px) */
+@media (min-width: 1200px) {
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+  .hero { min-height: 80vh; }
+  .hero__title { font-size: 6rem; }
+
+  /* Timeline Desktop */
+  .timeline-container { display: flex; align-items: center; min-height: calc(100vh - 200px); padding: 0; }
+  .timeline { display: flex; align-items: center; height: 100%; }
+  .timeline__line { top: 50px; left: 0; right: 0; bottom: auto; width: 100%; height: 2px; background: linear-gradient(to right, var(--primary), var(--tertiary), var(--primary)); transform: none; }
+  .timeline__track { flex-direction: row; overflow-x: auto; scroll-snap-type: x mandatory; padding: 2rem 0 3rem 0; gap: 2rem; width: 100%; scrollbar-width: thin; scrollbar-color: var(--primary) var(--surface-low); }
+  .timeline__track::-webkit-scrollbar { height: 8px; }
+  .timeline__track::-webkit-scrollbar-track { background: var(--surface-low); border-radius: 4px; }
+  .timeline__track::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 4px; }
+  
+  .timeline__node { flex: 0 0 400px; scroll-snap-align: center; flex-direction: column; align-items: center; justify-content: flex-start; }
+  .timeline__node:nth-child(odd) { flex-direction: column; }
+  .timeline__marker { position: static; transform: none; margin-bottom: 2rem; background: var(--bg-color); }
+  .timeline__card { width: 100%; }
+
+  /* --- Profile Desktop (Side-by-side) --- */
+  .profile-hero {
+    flex-direction: row;
+    position: static; 
+    border: none;
+    gap: 2rem;
+    overflow: visible;
+  }
+
+  .profile-hero__image-container {
+    width: 300px; 
+    aspect-ratio: 1/1; 
+    position: static; 
+    border-radius: 50%; 
+    overflow: hidden;
+    border: 4px solid var(--outline-variant);
+  }
+
+  .profile-hero__info-container {
+    flex: 1; 
+    position: static; 
+    background: transparent;
+    padding: 0;
+    backdrop-filter: none;
+    border: none;
+  }
+
+  .profile-hero__extra-info {
+    display: flex; 
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}

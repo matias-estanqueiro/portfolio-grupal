@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perfil Nova | Interstellar RockBand</title>
+    <meta name="description" content="Conoce a Nova, vocalista principal de Interstellar RockBand. Habilidades, películas favoritas y discos que inspiran su sonido espacial." />
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Space+Grotesk:wght@400;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+    <header class="header">
+        <div class="header__brand">&lt; ROCKBAND.dev /&gt;</div>
+        
+        <nav class="header__nav">
+            <a href="index.html">Home</a>
+            <a href="bitacora.html">Bitácora</a>
+            <a href="index.html#crew" style="color: var(--tertiary); border-bottom: 2px solid var(--tertiary);">Tripulación</a>
+        </nav>
+        <button class="btn btn--primary header__btn">Unirse a la Flota</button>
+    </header>
+
+    <main class="container" style="padding-top: 100px; padding-bottom: 80px;">
+        <section class="profile-hero">
+            <div class="profile-hero__image-container">
+                <img src="img/nova-avatar.jpg" alt="Retrato de Nova" class="profile-hero__image">
+            </div>
+            
+            <div class="profile-hero__info-container">
+                <div class="profile-hero__main-info">
+                    <span style="color: var(--primary); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px;"><i class="fa-solid fa-microphone"></i> Lead Vocals</span>
+                    <h1 style="font-size: clamp(3rem, 5vw, 4rem); margin: 0.5rem 0;">NOVA</h1>
+                    <p style="color: var(--tertiary);"><i class="fa-solid fa-location-dot"></i> Base Alpha, Kepler-452b</p>
+                    <div style="display: flex; gap: 2rem; margin-top: 1rem;">
+                        <div>
+                            <small style="color: var(--on-surface-variant);">EDAD (CICLOS)</small>
+                            <p style="font-size: 1.5rem; font-weight: bold;">28</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-hero__extra-info">
+                    <p style="color: var(--on-surface-variant); font-style: italic; font-size: 0.9rem;">"La voz de la galaxia"</p>
+                    <span style="color: #00ff00; font-size: 0.8rem; font-weight: bold; display: flex; align-items: center; gap: 5px;">
+                        <span style="width: 10px; height: 10px; border-radius: 50%; background-color: #00ff00;"></span>
+                        Online
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <section class="grid-3">
+            
+            <div class="accordion">
+                <input type="checkbox" id="toggle-skills" class="accordion__toggle" checked>
+                <label for="toggle-skills" class="accordion__header">
+                    <div class="accordion__title">
+                        <i class="fa-solid fa-brain" style="color: var(--tertiary);"></i> Habilidades
+                    </div>
+                    <i class="fa-solid fa-chevron-down accordion__arrow"></i>
+                </label>
+                <div class="accordion__content">
+                    <ul style="display: flex; flex-direction: column; gap: 1.5rem;">
+                        <li>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
+                                <span>Vocal Synthesis</span>
+                                <span style="color: var(--primary); font-weight: bold;">95%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-bar__fill" style="width: 95%;"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
+                                <span>Atmospheric Control</span>
+                                <span style="color: var(--primary); font-weight: bold;">80%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-bar__fill" style="width: 80%;"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
+                                <span>Zero-G Performance</span>
+                                <span style="color: var(--primary); font-weight: bold;">88%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-bar__fill" style="width: 88%;"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <input type="checkbox" id="toggle-movies" class="accordion__toggle">
+                <label for="toggle-movies" class="accordion__header">
+                    <div class="accordion__title">
+                        <i class="fa-solid fa-film" style="color: var(--primary-container);"></i> Películas
+                    </div>
+                    <i class="fa-solid fa-chevron-down accordion__arrow"></i>
+                </label>
+                <div class="accordion__content" style="border-left-color: var(--primary-container);">
+                    <ul style="display: flex; flex-direction: column; gap: 1.5rem;">
+                        <li style="display: flex; gap: 1rem; align-items: center;">
+                            <img src="img/movie-1.jpg" alt="Blade Runner 2049" style="width: 50px; height: 75px; object-fit: cover; border-radius: 4px; border: 1px solid var(--outline-variant);">
+                            <div>
+                                <strong>Blade Runner 2049</strong><br>
+                                <small style="color: var(--on-surface-variant);">Inspiración visual de la gira.</small>
+                            </div>
+                        </li>
+                        <li style="display: flex; gap: 1rem; align-items: center;">
+                            <img src="img/movie-2.jpg" alt="Interstellar" style="width: 50px; height: 75px; object-fit: cover; border-radius: 4px; border: 1px solid var(--outline-variant);">
+                            <div>
+                                <strong>Interstellar</strong><br>
+                                <small style="color: var(--on-surface-variant);">La física del sonido espacial.</small>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <input type="checkbox" id="toggle-albums" class="accordion__toggle">
+                <label for="toggle-albums" class="accordion__header">
+                    <div class="accordion__title">
+                        <i class="fa-solid fa-compact-disc" style="color: var(--tertiary);"></i> Discos
+                    </div>
+                    <i class="fa-solid fa-chevron-down accordion__arrow"></i>
+                </label>
+                <div class="accordion__content" style="border-left-color: var(--tertiary);">
+                    <ul style="display: flex; flex-direction: column; gap: 1.5rem;">
+                        <li style="display: flex; gap: 1rem; align-items: center;">
+                            <div style="width: 50px; height: 50px; background: var(--surface-high); border-radius: 4px; display: flex; align-items: center; justify-content: center;">
+                                <i class="fa-solid fa-music" style="color: var(--on-surface-variant);"></i>
+                            </div>
+                            <div>
+                                <strong>Dark Side of the Moonbase</strong><br>
+                                <small style="color: var(--on-surface-variant);">Pink Void</small>
+                            </div>
+                        </li>
+                        <li style="display: flex; gap: 1rem; align-items: center;">
+                            <div style="width: 50px; height: 50px; background: var(--surface-high); border-radius: 4px; display: flex; align-items: center; justify-content: center;">
+                                <i class="fa-solid fa-music" style="color: var(--on-surface-variant);"></i>
+                            </div>
+                            <div>
+                                <strong>Neon Nights</strong><br>
+                                <small style="color: var(--on-surface-variant);">The Synthweavers</small>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <nav class="nav-mobile">
+        <a href="index.html" class="nav-mobile__item">
+            <i class="fa-solid fa-rocket"></i> Inicio
+        </a>
+        <a href="bitacora.html" class="nav-mobile__item">
+            <i class="fa-solid fa-book-journal-whills"></i> Bitácora
+        </a>
+        <a href="index.html#crew" class="nav-mobile__item nav-mobile__item--active">
+            <i class="fa-solid fa-users"></i> Tripulación
+        </a>
+    </nav>
+</body>
+</html>
