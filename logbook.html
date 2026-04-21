@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bitácora de Desarrollo | Interstellar RockBand</title>
+    <meta name="description" content="Registro oficial del desarrollo del proyecto. Decisiones de diseño, dificultades y evolución de la plataforma web de Interstellar RockBand." />
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Space+Grotesk:wght@400;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+    <header class="header">
+        <div class="header__brand">&lt; ROCKBAND.dev /&gt;</div>
+        
+        <nav class="header__nav">
+            <a href="index.html">Home</a>
+            <a href="logbook.html" style="color: var(--tertiary); border-bottom: 2px solid var(--tertiary);">Bitácora</a>
+            <a href="index.html#crew">Tripulación</a>
+        </nav>
+        <button class="btn btn--primary header__btn">Unirse a la Flota</button>
+    </header>
+
+    <main class="container" style="padding-top: 100px; padding-bottom: 80px;">
+        <header style="margin-bottom: 3rem; text-align: center;">
+            <p style="color: var(--tertiary); font-size: 0.8rem; letter-spacing: 2px;">OPERACIÓN: TP1</p>
+            <h1 style="font-size: clamp(3rem, 5vw, 4rem); color: var(--primary); text-shadow: 0 0 20px rgba(255,177,196,0.3);">BITÁCORA</h1>
+            <p style="color: var(--on-surface-variant); max-width: 600px; margin: 0 auto;">Registro cronológico del proceso de desarrollo, decisiones de diseño tomadas por el equipo y resolución de conflictos.</p>
+        </header>
+
+        <section class="timeline-container">
+            <div class="timeline">
+                <div class="timeline__line"></div>
+                
+                <div class="timeline__track">
+                    <article class="timeline__node">
+                        <div class="timeline__marker">
+                            <i class="fa-solid fa-rocket"></i>
+                        </div>
+                        <div class="timeline__card">
+                            <time style="color: var(--tertiary); font-weight: bold; font-size: 0.8rem; font-family: var(--font-headline);">CY_2024.11.15</time>
+                            <h3 class="font-headline" style="margin: 0.5rem 0;">Atmospheric Entry (Inicio del Proyecto)</h3>
+                            <p style="color: var(--on-surface-variant); font-size: 0.9rem; line-height: 1.5;">
+                                Se decidió la temática "Cyberpunk Espacial" para representar la unión del equipo. Se estableció la paleta de colores basada en contrastes oscuros (#131314) con acentos neón (Rosa y Cyan) para asegurar buen contraste visual.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="timeline__node">
+                        <div class="timeline__marker" style="border-color: var(--tertiary); color: var(--tertiary);">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                        <div class="timeline__card">
+                            <time style="color: var(--primary); font-weight: bold; font-size: 0.8rem; font-family: var(--font-headline);">CY_2024.11.18</time>
+                            <h3 class="font-headline" style="margin: 0.5rem 0;">Sonic Calibration (Refactor a CSS)</h3>
+                            <p style="color: var(--on-surface-variant); font-size: 0.9rem; line-height: 1.5;">
+                                Dificultad encontrada: Migrar los mockups generados con Tailwind a CSS puro manteniendo el Responsive Design. Solución: Se implementó la metodología BEM y el uso intensivo de variables CSS nativas (`:root`) para controlar los tres breakpoints exigidos por la cátedra sin perder consistencia.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="timeline__node">
+                        <div class="timeline__marker" style="border-color: var(--primary-container); color: var(--primary-container);">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+                        <div class="timeline__card">
+                            <time style="color: var(--tertiary); font-weight: bold; font-size: 0.8rem; font-family: var(--font-headline);">CY_2024.11.20</time>
+                            <h3 class="font-headline" style="margin: 0.5rem 0;">Crew Assembly (Estructuras Nativas)</h3>
+                            <p style="color: var(--on-surface-variant); font-size: 0.9rem; line-height: 1.5;">
+                                Integración de HTML5 semántico moderno. Se reemplazaron scripts complejos por el uso de la etiqueta <code>&lt;details&gt;</code> para los acordeones en los perfiles de usuario, mejorando la accesibilidad y el SEO.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <nav class="nav-mobile">
+        <a href="index.html" class="nav-mobile__item">
+            <i class="fa-solid fa-rocket"></i> Inicio
+        </a>
+        <a href="logbook.html" class="nav-mobile__item nav-mobile__item--active">
+            <i class="fa-solid fa-book-journal-whills"></i> Bitácora
+        </a>
+        <a href="index.html#crew" class="nav-mobile__item">
+            <i class="fa-solid fa-users"></i> Tripulación
+        </a>
+    </nav>
+</body>
+</html>
