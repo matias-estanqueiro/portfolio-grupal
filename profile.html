@@ -17,34 +17,34 @@
         <nav class="header__nav">
             <a href="index.html">Home</a>
             <a href="logbook.html">Bitácora</a>
-            <a href="index.html#crew" style="color: var(--tertiary); border-bottom: 2px solid var(--tertiary);">Tripulación</a>
+            <a href="index.html#crew" class="nav-link--active">Tripulación</a>
         </nav>
-        <button class="btn btn--primary header__btn">Unirse a la Flota</button>
+        <button class="btn btn--primary header__btn">Contacto</button>
     </header>
 
-    <main class="container" style="padding-top: 100px; padding-bottom: 80px;">
+    <main class="container pt-header">
         <section class="profile-hero">
             <div class="profile-hero__image-container">
-                <img src="img/nova-avatar.jpg" alt="Retrato de Nova" class="profile-hero__image">
+                <img src="img/profile_vocalist_02.png" alt="Retrato de Nova" class="profile-hero__image">
             </div>
             
             <div class="profile-hero__info-container">
                 <div class="profile-hero__main-info">
-                    <span style="color: var(--primary); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px;"><i class="fa-solid fa-microphone"></i> Lead Vocals</span>
-                    <h1 style="font-size: clamp(3rem, 5vw, 4rem); margin: 0.5rem 0;">NOVA</h1>
-                    <p style="color: var(--tertiary);"><i class="fa-solid fa-location-dot"></i> Base Alpha, Kepler-452b</p>
-                    <div style="display: flex; gap: 2rem; margin-top: 1rem;">
-                        <div>
-                            <small style="color: var(--on-surface-variant);">EDAD (CICLOS)</small>
-                            <p style="font-size: 1.5rem; font-weight: bold;">28</p>
+                    <span class="profile-hero__role"><i class="fa-solid fa-microphone"></i> Lead Vocals</span>
+                    <h1 class="profile-hero__name">NOVA</h1>
+                    <p class="profile-hero__location"><i class="fa-solid fa-location-dot"></i> Base Alpha, Kepler-452b</p>
+                    <div class="profile-hero__stats">
+                        <div class="profile-hero__stat">
+                            <span class="profile-hero__stat-label">EDAD (CICLOS)</span>
+                            <p class="profile-hero__stat-value">28</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="profile-hero__extra-info">
-                    <p style="color: var(--on-surface-variant); font-style: italic; font-size: 0.9rem;">"La voz de la galaxia"</p>
-                    <span style="color: #00ff00; font-size: 0.8rem; font-weight: bold; display: flex; align-items: center; gap: 5px;">
-                        <span style="width: 10px; height: 10px; border-radius: 50%; background-color: #00ff00;"></span>
+                    <p class="profile-hero__quote">"La voz de la galaxia"</p>
+                    <span class="profile-hero__status">
+                        <span class="profile-hero__status-indicator"></span>
                         Online
                     </span>
                 </div>
@@ -52,7 +52,6 @@
         </section>
 
         <section class="grid-3">
-            
             <div class="accordion">
                 <input type="checkbox" id="toggle-skills" class="accordion__toggle" checked>
                 <label for="toggle-skills" class="accordion__header">
@@ -62,32 +61,32 @@
                     <i class="fa-solid fa-chevron-down accordion__arrow"></i>
                 </label>
                 <div class="accordion__content">
-                    <ul style="display: flex; flex-direction: column; gap: 1.5rem;">
+                    <ul class="accordion__list">
                         <li>
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
+                            <div class="progress-bar__header">
                                 <span>Vocal Synthesis</span>
-                                <span style="color: var(--primary); font-weight: bold;">95%</span>
+                                <span class="progress-bar__percentage">95%</span>
                             </div>
                             <div class="progress-bar">
-                                <div class="progress-bar__fill" style="width: 95%;"></div>
+                                <div class="progress-bar__fill progress-bar__fill--95"></div>
                             </div>
                         </li>
                         <li>
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
+                            <div class="progress-bar__header">
                                 <span>Atmospheric Control</span>
-                                <span style="color: var(--primary); font-weight: bold;">80%</span>
+                                <span class="progress-bar__percentage">80%</span>
                             </div>
                             <div class="progress-bar">
-                                <div class="progress-bar__fill" style="width: 80%;"></div>
+                                <div class="progress-bar__fill progress-bar__fill--80"></div>
                             </div>
                         </li>
                         <li>
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
+                            <div class="progress-bar__header">
                                 <span>Zero-G Performance</span>
-                                <span style="color: var(--primary); font-weight: bold;">88%</span>
+                                <span class="progress-bar__percentage">88%</span>
                             </div>
                             <div class="progress-bar">
-                                <div class="progress-bar__fill" style="width: 88%;"></div>
+                                <div class="progress-bar__fill progress-bar__fill--88"></div>
                             </div>
                         </li>
                     </ul>
@@ -102,20 +101,18 @@
                     </div>
                     <i class="fa-solid fa-chevron-down accordion__arrow"></i>
                 </label>
-                <div class="accordion__content" style="border-left-color: var(--primary-container);">
-                    <ul style="display: flex; flex-direction: column; gap: 1.5rem;">
-                        <li style="display: flex; gap: 1rem; align-items: center;">
-                            <img src="img/movie-1.jpg" alt="Blade Runner 2049" style="width: 50px; height: 75px; object-fit: cover; border-radius: 4px; border: 1px solid var(--outline-variant);">
+                <div class="accordion__content accordion__content--primary">
+                    <ul class="accordion__list">
+                        <li class="accordion__list-item">
                             <div>
                                 <strong>Blade Runner 2049</strong><br>
-                                <small style="color: var(--on-surface-variant);">Inspiración visual de la gira.</small>
+                                <span class="accordion__text-small">Inspiración visual de la gira.</span>
                             </div>
                         </li>
-                        <li style="display: flex; gap: 1rem; align-items: center;">
-                            <img src="img/movie-2.jpg" alt="Interstellar" style="width: 50px; height: 75px; object-fit: cover; border-radius: 4px; border: 1px solid var(--outline-variant);">
+                        <li class="accordion__list-item">
                             <div>
                                 <strong>Interstellar</strong><br>
-                                <small style="color: var(--on-surface-variant);">La física del sonido espacial.</small>
+                                <span class="accordion__text-small">La física del sonido espacial.</span>
                             </div>
                         </li>
                     </ul>
@@ -130,32 +127,39 @@
                     </div>
                     <i class="fa-solid fa-chevron-down accordion__arrow"></i>
                 </label>
-                <div class="accordion__content" style="border-left-color: var(--tertiary);">
-                    <ul style="display: flex; flex-direction: column; gap: 1.5rem;">
-                        <li style="display: flex; gap: 1rem; align-items: center;">
-                            <div style="width: 50px; height: 50px; background: var(--surface-high); border-radius: 4px; display: flex; align-items: center; justify-content: center;">
-                                <i class="fa-solid fa-music" style="color: var(--on-surface-variant);"></i>
+                <div class="accordion__content accordion__content--tertiary">
+                    <ul class="accordion__list">
+                        <li class="accordion__list-item">
+                            <div class="accordion__icon-box">
+                                <i class="fa-solid fa-music accordion__icon"></i>
                             </div>
                             <div>
                                 <strong>Dark Side of the Moonbase</strong><br>
-                                <small style="color: var(--on-surface-variant);">Pink Void</small>
+                                <span class="accordion__text-small">Pink Void</span>
                             </div>
                         </li>
-                        <li style="display: flex; gap: 1rem; align-items: center;">
-                            <div style="width: 50px; height: 50px; background: var(--surface-high); border-radius: 4px; display: flex; align-items: center; justify-content: center;">
-                                <i class="fa-solid fa-music" style="color: var(--on-surface-variant);"></i>
+                        <li class="accordion__list-item">
+                            <div class="accordion__icon-box">
+                                <i class="fa-solid fa-music accordion__icon"></i>
                             </div>
                             <div>
                                 <strong>Neon Nights</strong><br>
-                                <small style="color: var(--on-surface-variant);">The Synthweavers</small>
+                                <span class="accordion__text-small">The Synthweavers</span>
                             </div>
                         </li>
                     </ul>
                 </div>
             </div>
-
         </section>
     </main>
+
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__item">EARTH - 2026</div>
+            <div class="footer__item">IFTS 29 - DESARROLLO FRONTEND</div>
+            <div class="footer__item footer__item--brand">&lt;ROCKBAND.DEV /&gt;</div>
+        </div>
+    </footer>
 
     <nav class="nav-mobile">
         <a href="index.html" class="nav-mobile__item">
