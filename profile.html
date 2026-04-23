@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Perfil Nova | Interstellar RockBand</title>
-    <meta name="description" content="Conoce a Nova, vocalista principal de Interstellar RockBand. Habilidades, películas favoritas y discos que inspiran su sonido espacial." />
+    <title>Perfil | Interstellar RockDevs</title>
+    <meta name="description" content="Conoce a los miembros de Interstellar RockDevs. Habilidades, películas favoritas y discos que inspiran su sonido espacial." />
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Space+Grotesk:wght@400;700;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -12,7 +12,7 @@
 </head>
 <body>
     <header class="header">
-        <div class="header__brand">&lt; ROCKBAND.dev /&gt;</div>
+        <div class="header__brand">&lt; ROCKDEVS /&gt;</div>
         
         <nav class="header__nav">
             <a href="index.html">Home</a>
@@ -23,35 +23,62 @@
     </header>
 
     <main class="container pt-header">
+
         <section class="profile-hero">
-            <div class="profile-hero__image-container">
-                <img src="img/profile_vocalist_02.png" alt="Retrato de Nova" class="profile-hero__image">
+            <div class="profile-hero__media">
+                <img id="profile-img" src="#" alt="Retrato" class="profile-hero__image">
+                <div class="profile-hero__status-mobile">
+                    <span class="status-dot status-dot--tertiary"></span> <span id="profile-status-mobile"></span>
+                </div>
             </div>
             
-            <div class="profile-hero__info-container">
-                <div class="profile-hero__main-info">
-                    <span class="profile-hero__role"><i class="fa-solid fa-microphone"></i> Lead Vocals</span>
-                    <h1 class="profile-hero__name">NOVA</h1>
-                    <p class="profile-hero__location"><i class="fa-solid fa-location-dot"></i> Base Alpha, Kepler-452b</p>
-                    <div class="profile-hero__stats">
-                        <div class="profile-hero__stat">
-                            <span class="profile-hero__stat-label">EDAD (CICLOS)</span>
-                            <p class="profile-hero__stat-value">28</p>
-                        </div>
-                    </div>
+            <div class="profile-hero__content">
+                <div class="profile-hero__meta-top">
+                    <span class="profile-hero__role"><i id="profile-icon" class="fa-solid fa-microphone"></i> <span id="profile-role"></span></span>
+                    <span class="profile-hero__location"><i class="fa-solid fa-location-dot"></i> <span id="profile-location-desktop"></span></span>
                 </div>
 
-                <div class="profile-hero__extra-info">
-                    <p class="profile-hero__quote">"La voz de la galaxia"</p>
-                    <span class="profile-hero__status">
-                        <span class="profile-hero__status-indicator"></span>
-                        Online
-                    </span>
+                <h1 id="profile-name" class="profile-hero__name"></h1>
+                
+                <div class="profile-hero__location-mobile">
+                    <i class="fa-solid fa-location-dot"></i> <span id="profile-location-mobile"></span>
+                </div>
+
+                <p id="profile-quote" class="profile-hero__quote"></p>
+
+                <div class="profile-hero__stats">
+                    <div class="profile-hero__stat profile-hero__stat--pill">
+                        <span class="profile-hero__stat-value"><i class="fa-solid fa-location-dot" style="color: var(--tertiary);"></i> <span id="profile-location-tablet"></span></span>
+                    </div>
+
+                    <div class="profile-hero__stat">
+                        <span class="profile-hero__stat-label">Ciclos</span>
+                        <span class="profile-hero__stat-value"><i class="fa-solid fa-hourglass-half tablet-icon" style="color: var(--tertiary); margin-right: 5px;"></i><span id="profile-age"></span><span style="font-size: 0.8rem; font-weight: normal; color: var(--on-surface-variant);">.y</span></span>
+                    </div>
+
+                    <div class="profile-hero__stat profile-hero__stat--mobile-extra">
+                        <span class="profile-hero__stat-label">Primary Instrument</span>
+                        <span id="profile-instrument" class="profile-hero__stat-value"></span>
+                    </div>
+                    
+                    <div class="profile-hero__stat profile-hero__stat--mobile-extra">
+                        <span class="profile-hero__stat-label">Stage Role</span>
+                        <span id="profile-stage-role" class="profile-hero__stat-value"></span>
+                    </div>
+                    
+                    <div class="profile-hero__stat profile-hero__stat--desktop-status">
+                        <span class="profile-hero__stat-label">Estado</span>
+                        <span class="profile-hero__stat-value" style="color: var(--tertiary); font-size: 1.2rem;"><span class="status-dot status-dot--tertiary"></span> <span id="profile-status-desktop"></span></span>
+                    </div>
+                </div>
+                
+                <div class="profile-hero__comms">
+                    <i class="fa-solid fa-satellite-dish"></i> COMUNICACIONES ABIERTAS ...
                 </div>
             </div>
         </section>
 
-        <section class="grid-3">
+       <section class="grid-3">
             <div class="accordion">
                 <input type="checkbox" id="toggle-skills" class="accordion__toggle" checked>
                 <label for="toggle-skills" class="accordion__header">
@@ -61,35 +88,7 @@
                     <i class="fa-solid fa-chevron-down accordion__arrow"></i>
                 </label>
                 <div class="accordion__content">
-                    <ul class="accordion__list">
-                        <li>
-                            <div class="progress-bar__header">
-                                <span>Vocal Synthesis</span>
-                                <span class="progress-bar__percentage">95%</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress-bar__fill progress-bar__fill--95"></div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="progress-bar__header">
-                                <span>Atmospheric Control</span>
-                                <span class="progress-bar__percentage">80%</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress-bar__fill progress-bar__fill--80"></div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="progress-bar__header">
-                                <span>Zero-G Performance</span>
-                                <span class="progress-bar__percentage">88%</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress-bar__fill progress-bar__fill--88"></div>
-                            </div>
-                        </li>
-                    </ul>
+                    <ul class="accordion__list" id="profile-skills-list"></ul>
                 </div>
             </div>
 
@@ -102,20 +101,7 @@
                     <i class="fa-solid fa-chevron-down accordion__arrow"></i>
                 </label>
                 <div class="accordion__content accordion__content--primary">
-                    <ul class="accordion__list">
-                        <li class="accordion__list-item">
-                            <div>
-                                <strong>Blade Runner 2049</strong><br>
-                                <span class="accordion__text-small">Inspiración visual de la gira.</span>
-                            </div>
-                        </li>
-                        <li class="accordion__list-item">
-                            <div>
-                                <strong>Interstellar</strong><br>
-                                <span class="accordion__text-small">La física del sonido espacial.</span>
-                            </div>
-                        </li>
-                    </ul>
+                    <ul class="accordion__list" id="profile-movies-list"></ul>
                 </div>
             </div>
 
@@ -128,26 +114,7 @@
                     <i class="fa-solid fa-chevron-down accordion__arrow"></i>
                 </label>
                 <div class="accordion__content accordion__content--tertiary">
-                    <ul class="accordion__list">
-                        <li class="accordion__list-item">
-                            <div class="accordion__icon-box">
-                                <i class="fa-solid fa-music accordion__icon"></i>
-                            </div>
-                            <div>
-                                <strong>Dark Side of the Moonbase</strong><br>
-                                <span class="accordion__text-small">Pink Void</span>
-                            </div>
-                        </li>
-                        <li class="accordion__list-item">
-                            <div class="accordion__icon-box">
-                                <i class="fa-solid fa-music accordion__icon"></i>
-                            </div>
-                            <div>
-                                <strong>Neon Nights</strong><br>
-                                <span class="accordion__text-small">The Synthweavers</span>
-                            </div>
-                        </li>
-                    </ul>
+                    <ul class="accordion__list" id="profile-albums-list"></ul>
                 </div>
             </div>
         </section>
@@ -157,7 +124,7 @@
         <div class="footer__container">
             <div class="footer__item">EARTH - 2026</div>
             <div class="footer__item">IFTS 29 - DESARROLLO FRONTEND</div>
-            <div class="footer__item footer__item--brand">&lt;ROCKBAND.DEV /&gt;</div>
+            <div class="footer__item footer__item--brand">&lt; ROCKDEVS /&gt;</div>
         </div>
     </footer>
 
@@ -172,5 +139,7 @@
             <i class="fa-solid fa-users"></i> Tripulación
         </a>
     </nav>
+
+    <script src="js/profile.js"></script>
 </body>
 </html>
