@@ -49,7 +49,7 @@ ul { list-style: none; }
   position: fixed; top: 0; width: 100%; background: rgba(19, 19, 20, 0.8);
   backdrop-filter: blur(20px); border-bottom: 1px solid var(--outline-variant);
   box-shadow: 0 2px 20px rgba(255, 177, 196, 0.1); z-index: 50;
-  display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.5rem;
+  display: flex; justify-content: space-around; align-items: center; padding: 1rem 1.5rem;
 }
 .header__brand { color: var(--primary); font-weight: 900; font-size: 1.25rem; letter-spacing: 0.1em; text-shadow: 0 0 10px rgba(255, 177, 196, 0.4); }
 .header__nav { display: none; }
@@ -73,7 +73,7 @@ ul { list-style: none; }
 /* =========================================
    INDEX: HERO Y ECUALIZADOR
    ========================================= */
-.hero { text-align: center; margin-bottom: 4rem; padding: 120px 1rem 2rem 1rem; width: 100%; }
+.hero { text-align: center; padding: 120px 1rem 2rem 1rem; width: 100%; }
 .hero__content { display: flex; flex-direction: column; align-items: center; margin: 0 auto; }
 .hero__title { font-size: clamp(3rem, 8vw, 6rem); color: var(--primary); text-shadow: 0 0 20px rgba(255,177,196,0.3); margin-bottom: 1rem; }
 .hero__description { color: var(--on-surface-variant); max-width: 600px; margin: 0 auto; line-height: 1.6; }
@@ -146,7 +146,7 @@ ul { list-style: none; }
 
 /* Footer Global */
 .footer { display: none; margin-top: auto; padding: 2rem 1rem; background: rgba(19, 19, 20, 0.9); border-top: 1px solid var(--outline-variant); font-family: var(--font-headline); font-size: 0.8rem; text-transform: uppercase; color: var(--on-surface-variant); }
-.footer__container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.footer__container { margin: 0 auto; display: flex; justify-content: space-around; align-items: center; gap: 1rem; flex-wrap: wrap; }
 .footer__item--brand { color: var(--primary); font-weight: bold; }
 
 

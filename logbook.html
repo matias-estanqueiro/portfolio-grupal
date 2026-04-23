@@ -19,7 +19,7 @@
             <a href="logbook.html" class="nav-link--active">Bitácora</a>
             <a href="index.html#crew">Tripulación</a>
         </nav>
-        <button class="btn btn--primary header__btn">Contacto</button>
+        <button class="btn btn--primary header__btn">Software & Music</button>
     </header>
 
     <main class="container pt-header">
@@ -32,46 +32,8 @@
             <div class="timeline">
                 <div class="timeline__line"></div>
                 
-                <div class="timeline__track">
-                    <article class="timeline__node">
-                        <div class="timeline__marker">
-                            <i class="fa-solid fa-rocket"></i>
-                        </div>
-                        <div class="timeline__card">
-                            <time class="timeline__date">EARTH_2026_04.15</time>
-                            <h3 class="font-headline timeline__title">Atmospheric Entry (Inicio del Proyecto)</h3>
-                            <p class="timeline__description">
-                                Se decidió la temática "Cyberpunk Espacial" para representar la unión del equipo. Se estableció la paleta de colores basada en contrastes oscuros (#131314) con acentos neón (Rosa y Cyan) para asegurar buen contraste visual.
-                            </p>
-                        </div>
-                    </article>
-
-                    <article class="timeline__node">
-                        <div class="timeline__marker timeline__marker--tertiary">
-                            <i class="fa-solid fa-code"></i>
-                        </div>
-                        <div class="timeline__card">
-                            <time class="timeline__date">EARTH_2026_04.18</time>
-                            <h3 class="font-headline timeline__title">Sonic Calibration (Refactor a CSS)</h3>
-                            <p class="timeline__description">
-                                Dificultad encontrada: Migrar los mockups generados con Tailwind a CSS puro manteniendo el Responsive Design. Solución: Se implementó la metodología BEM y el uso intensivo de variables CSS nativas (`:root`) para controlar los tres breakpoints exigidos por la cátedra sin perder consistencia.
-                            </p>
-                        </div>
-                    </article>
-
-                    <article class="timeline__node">
-                        <div class="timeline__marker timeline__marker--primary-container">
-                            <i class="fa-solid fa-users"></i>
-                        </div>
-                        <div class="timeline__card">
-                            <time class="timeline__date">EARTH_2026_04.20</time>
-                            <h3 class="font-headline timeline__title">Crew Assembly (Estructuras Nativas)</h3>
-                            <p class="timeline__description">
-                                Integración de HTML5 semántico moderno. Se reemplazaron scripts complejos por el uso de la etiqueta <code>&lt;details&gt;</code> para los acordeones en los perfiles de usuario, mejorando la accesibilidad y el SEO.
-                            </p>
-                        </div>
-                    </article>
-                </div>
+                <div class="timeline__track" id="timeline-track">
+                    </div>
             </div>
         </section>
     </main>
@@ -95,5 +57,7 @@
             <i class="fa-solid fa-users"></i> Tripulación
         </a>
     </nav>
+
+    <script src="js/logbook.js"></script>
 </body>
 </html>
