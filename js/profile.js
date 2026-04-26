@@ -16,7 +16,9 @@ const crewDatabase = {
         skills: [
             { name: "JAVA (SpringBoot)", percentage: 100 },
             { name: "Angular", percentage: 60 },
-            { name: "Oracle/SQL", percentage: 100 }
+            { name: "Oracle/SQL", percentage: 100 },
+            { name: "C#", percentage: 50 },
+            { name: "Kotlin", percentage: 50 },
         ],
         movies: [
             { title: "12 Monkeys", description: "Rompecabezas temporal brillante" },
@@ -24,7 +26,9 @@ const crewDatabase = {
             { title: "Fear and Loathing in Las Vegas", description: "Viaje psicodélico rompereglas" }
         ],
         albums: [
-            { title: "Misterioso Chocolate", band: "Misterioso Chocolate" },
+            { title: "Prender un fuego", band: "Marilina Bertoldi" },
+            { title: "Bach", band: "Bandalos Chinos" },
+            { title: "Chances", band: "Illya Kuryaki & The Valderramas" }
         ]
     },
     lucio: {
