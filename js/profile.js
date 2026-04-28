@@ -25,7 +25,8 @@ const crewDatabase = {
         ],
         albums: [
             { title: "Misterioso Chocolate", band: "Misterioso Chocolate" },
-        ]
+        ],
+        feature: 'skill-bars-animated'
     },
     lucio: {
         name: "LUCIO",
@@ -51,7 +52,8 @@ const crewDatabase = {
         albums: [
             { title: "Dúplo la Dua", band: "Dúplo la Dua" },
             { title: "Bluzzarella Blues", band: "Bluzzarella Blues" },
-        ]
+        ],
+        feature: 'typing-quote'
     },
     matias: {
         name: "MATIAS",
@@ -78,7 +80,9 @@ const crewDatabase = {
             { title: "Hybrid Theory", band: "Linkin Park" },
             { title: "Lifelines", band: "I Prevail" },
             { title: "Getting Away With Murder", band: "Papa Roach" },
-        ]
+        ],
+        feature: 'countdown',
+        nextShow: '2024-12-31T20:00:00'
     }
 };
 
@@ -160,6 +164,94 @@ function loadProfileData() {
             </li>
         `;
     });
+    // 6. Cargar características específicas del miembro
+    loadFeature(memberData);
+}
+
+// ─── FEATURES INDIVIDUALES ─────────────────────────────────
+
+function loadFeature(memberData) {
+    const featureMap = {
+        'skill-bars-animated': featureAnimatedBars,
+        'typing-quote':        featureTypingQuote,
+        'countdown':           featureCountdown,
+    };
+    const fn = featureMap[memberData.feature];
+    if (fn) fn(memberData);
+}
+
+// ── AYELEN: Barras animadas con IntersectionObserver ────────
+// Funciona porque las barras YA existen en el DOM (las crea loadProfileData)
+function featureAnimatedBars() {
+    const fills = document.querySelectorAll('.progress-bar__fill');
+    if (!fills.length) return; // Si el HTML de ese breakpoint no tiene barras, no explota
+
+    fills.forEach(fill => {
+        fill.dataset.target = fill.style.width;
+        fill.style.width = '0%';
+        fill.style.transition = 'width 1.2s cubic-bezier(0.4, 0, 0.2, 1)';
+    });
+
+    // Buscamos cualquier contenedor de skills que exista en ESE html
+    const anchor = document.getElementById('profile-skills-list')
+                || document.querySelector('.progress-bar')?.closest('section, div, ul');
+    if (!anchor) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                fills.forEach(fill => fill.style.width = fill.dataset.target);
+                observer.disconnect();
+            }
+        });
+    }, { threshold: 0.3 });
+
+    observer.observe(anchor);
+}
+
+// ── LUCIO: Efecto de tipeo en la quote ──────────────────────
+// Busca el elemento de quote con múltiples selectores posibles
+function featureTypingQuote(memberData) {
+    // Cada HTML puede tener un id o clase distinta, probamos todos
+    const quoteEl = document.getElementById('profile-quote')
+                 || document.querySelector('.profile-hero__quote')
+                 || document.querySelector('p[class*="italic"]')
+                 || document.querySelector('p[class*="font-light"]');
+    if (!quoteEl) return;
+
+    const fullText = memberData.quote;
+    quoteEl.textContent = '';
+
+    let i = 0;
+    const interval = setInterval(() => {
+        quoteEl.textContent = fullText.slice(0, i) + '█';
+        i++;
+        if (i > fullText.length) {
+            quoteEl.textContent = fullText;
+            clearInterval(interval);
+        }
+    }, 45);
+}
+
+// ── MATIAS: Countdown al próximo show ───────────────────────
+// Crea su propio widget y lo inserta donde pueda
+function featureCountdown(memberData) {
+    const widget = document.getElementById('countdown-widget');
+    if (!widget || !memberData.nextShow) return;
+
+    widget.style.display = 'block'; // Solo lo muestra si corresponde
+    const targetDate = new Date(memberData.nextShow);
+
+    function tick() {
+        const diff = targetDate - new Date();
+        if (diff <= 0) return;
+        document.getElementById('cd-days').textContent  = String(Math.floor(diff / 86400000)).padStart(2,'0');
+        document.getElementById('cd-hours').textContent = String(Math.floor((diff % 86400000) / 3600000)).padStart(2,'0');
+        document.getElementById('cd-mins').textContent  = String(Math.floor((diff % 3600000) / 60000)).padStart(2,'0');
+        document.getElementById('cd-secs').textContent  = String(Math.floor((diff % 60000) / 1000)).padStart(2,'0');
+    }
+    tick();
+    setInterval(tick, 1000);
 }
 
 // Ejecutamos la función cuando el DOM cargue
