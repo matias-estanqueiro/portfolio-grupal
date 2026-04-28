@@ -57,7 +57,7 @@ const crewDatabase = {
             { title: "Dúplo la Dua", band: "Dúplo la Dua" },
             { title: "Bluzzarella Blues", band: "Bluzzarella Blues" },
         ],
-        feature: 'typing-quote'
+        // feature: 'typing-quote' // para agregar funcionalidad individual
     },
     matias: {
         name: "MATIAS",
@@ -86,7 +86,7 @@ const crewDatabase = {
             { title: "Getting Away With Murder", band: "Papa Roach" },
         ],
         feature: 'countdown',
-        nextShow: '2024-12-31T20:00:00'
+        nextShow: '2026-12-31T20:00:00'
     }
 };
 
@@ -185,7 +185,6 @@ function loadFeature(memberData) {
 }
 
 // ── AYELEN: Barras animadas con IntersectionObserver ────────
-// Funciona porque las barras YA existen en el DOM (las crea loadProfileData)
 function featureAnimatedBars() {
     const fills = document.querySelectorAll('.progress-bar__fill');
     if (!fills.length) return; // Si el HTML de ese breakpoint no tiene barras, no explota
@@ -196,7 +195,6 @@ function featureAnimatedBars() {
         fill.style.transition = 'width 1.2s cubic-bezier(0.4, 0, 0.2, 1)';
     });
 
-    // Buscamos cualquier contenedor de skills que exista en ESE html
     const anchor = document.getElementById('profile-skills-list')
                 || document.querySelector('.progress-bar')?.closest('section, div, ul');
     if (!anchor) return;
@@ -214,33 +212,15 @@ function featureAnimatedBars() {
 }
 
 // ── LUCIO: Efecto de tipeo en la quote ──────────────────────
-// Busca el elemento de quote con múltiples selectores posibles
-function featureTypingQuote(memberData) {
-    // Cada HTML puede tener un id o clase distinta, probamos todos
-    const quoteEl = document.getElementById('profile-quote')
-                 || document.querySelector('.profile-hero__quote')
-                 || document.querySelector('p[class*="italic"]')
-                 || document.querySelector('p[class*="font-light"]');
-    if (!quoteEl) return;
-
-    const fullText = memberData.quote;
-    quoteEl.textContent = '';
-
-    let i = 0;
-    const interval = setInterval(() => {
-        quoteEl.textContent = fullText.slice(0, i) + '█';
-        i++;
-        if (i > fullText.length) {
-            quoteEl.textContent = fullText;
-            clearInterval(interval);
-        }
-    }, 45);
-}
+// función efecto para este perfil
 
 // ── MATIAS: Countdown al próximo show ───────────────────────
-// Crea su propio widget y lo inserta donde pueda
+
 function featureCountdown(memberData) {
     const widget = document.getElementById('countdown-widget');
+    console.log("Widget encontrado:", widget);
+    console.log("Fecha del show:", memberData.nextShow);
+
     if (!widget || !memberData.nextShow) return;
 
     widget.style.display = 'block'; // Solo lo muestra si corresponde

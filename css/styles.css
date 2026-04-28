@@ -189,6 +189,39 @@ ul { list-style: none; }
 .footer__container { margin: 0 auto; display: flex; justify-content: space-around; align-items: center; gap: 1rem; flex-wrap: wrap; }
 .footer__item--brand { color: var(--primary); font-weight: bold; }
 
+/* =========================================
+   ESTILOS ESPECÍFICOS DE FUNCIONALIDADES
+   ========================================= */
+#countdown-widget {
+    margin-top: 1rem;
+}
+.countdown__label {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: #00dce5;
+    margin-bottom: 0.5rem;
+}
+.countdown__grid {
+    display: flex;
+    gap: 1rem;
+}
+.countdown__unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.countdown__unit span {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffb1c4;
+    font-family: 'Space Grotesk', sans-serif;
+}
+.countdown__unit small {
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    color: #e5bcc5;
+}
+
 
 /* =========================================
    =========================================
