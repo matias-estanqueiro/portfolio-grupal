@@ -38,15 +38,16 @@ const crewDatabase = {
         iconClass: "fa-solid fa-guitar",
         locationFull: "Orbital Station Sirius",
         locationShort: "Sirius Station",
-        age: "34",
+        age: "30",
         status: "ONLINE",
         instrument: "Plasma Guitar",
         quote: '"Distorsionando la galaxia con cada nota"',
         image: "img/profile_guitarist_01.png",
         skills: [
             { name: "JAVA (SpringBoot)", percentage: 100 },
-            { name: "Python", percentage: 60 },
-            { name: "Angular", percentage: 55 },
+            { name: "Python", percentage: 50 },
+            { name: "Angular", percentage: 70 },
+            { name: "BPM Oracle", percentage: 80 }
         ],
         movies: [
             { title: "GoodFellas", description: "Crónica del crimen organizado" },
@@ -54,10 +55,12 @@ const crewDatabase = {
             { title: "Amacord", description: "Recuerdos de la infancia y la juventud" }
         ],
         albums: [
-            { title: "Dúplo la Dua", band: "Dúplo la Dua" },
-            { title: "Bluzzarella Blues", band: "Bluzzarella Blues" },
+            { title: "Romance", band: "Fontaines D.C." },
+            { title: "Toro y Pampa", band: "Almafuerte" },
+            { title: "Gal Costa", band: "Gal Costa" }
         ],
-        // feature: 'typing-quote' // para agregar funcionalidad individual
+        feature: 'type-writer', // para agregar funcionalidad individual
+        parallax: true
     },
     matias: {
         name: "MATIAS",
@@ -177,12 +180,17 @@ function loadProfileData() {
 function loadFeature(memberData) {
     const featureMap = {
         'skill-bars-animated': featureAnimatedBars,
-        'typing-quote':        featureTypingQuote,
+        'type-writer':        featureTypeWriter,
         'countdown':           featureCountdown,
     };
     const fn = featureMap[memberData.feature];
     if (fn) fn(memberData);
+    
+    if (memberData.parallax) {
+        initParallax();
+    }
 }
+
 
 // ── AYELEN: Barras animadas con IntersectionObserver ────────
 function featureAnimatedBars() {
@@ -211,8 +219,139 @@ function featureAnimatedBars() {
     observer.observe(anchor);
 }
 
-// ── LUCIO: Efecto de tipeo en la quote ──────────────────────
-// función efecto para este perfil
+// ── LUCIO: Efecto de typeWriter y estrellas animadas con Parallax ──────────────────────
+function featureTypeWriter() {
+    const textElement = document.getElementById('profile-quote');
+    
+    if (!textElement) return;
+    
+    const fullText = textElement.textContent;
+    let charIndex = 0;
+    let isDeleting = false;
+    const typingSpeed = 50;
+    const deleteSpeed = 30;
+    const pauseDuration = 3000;
+    
+    textElement.style.borderRight = '2px solid var(--primary)';
+    
+    function type() {
+        if (isDeleting) {
+            textElement.textContent = fullText.substring(0, charIndex - 1);
+            charIndex--;
+        } else {
+            textElement.textContent = fullText.substring(0, charIndex + 1);
+            charIndex++;
+        }
+        
+        let timeout = isDeleting ? deleteSpeed : typingSpeed;
+        
+        if (!isDeleting && charIndex === fullText.length) {
+            timeout = pauseDuration;
+            isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            timeout = pauseDuration;
+        }
+        
+        setTimeout(type, timeout);
+    }
+    
+    type();
+}
+
+function initParallax() {
+    let starsContainer = document.getElementById('stars-parallax');
+    
+    if (!starsContainer) {
+        starsContainer = document.createElement('div');
+        starsContainer.id = 'stars-parallax';
+        starsContainer.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        `;
+        
+        const firstChild = document.body.firstChild;
+        document.body.insertBefore(starsContainer, firstChild);
+        generateStars(starsContainer, 150);
+    }
+    
+    let ticking = false;
+    
+    function updateParallax() {
+        const scrollY = window.scrollY;
+        const speed = 0.3;
+        
+        const stars = starsContainer.querySelectorAll('.star');
+        stars.forEach((star) => {
+            const depth = parseFloat(star.dataset.depth) || 0.5;
+            const yPos = scrollY * speed * depth;
+            star.style.transform = `translateY(${yPos}px)`;
+        });
+        
+        ticking = false;
+    }
+    
+    function onScroll() {
+        if (!ticking) {
+            window.requestAnimationFrame(updateParallax);
+            ticking = true;
+        }
+    }
+    
+    window.addEventListener('scroll', onScroll, { passive: true });
+    updateParallax();
+}
+
+function generateStars(container, count) {
+    const colors = ['#ffffff', '#ffb1c4', '#00d5e5', '#ff4a8d'];
+    
+    for (let i = 0; i < count; i++) {
+        const star = document.createElement('div');
+        const size = Math.random() * 3 + 1;
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        const depth = Math.random() * 0.8 + 0.1;
+        
+        star.className = 'star';
+        star.dataset.depth = depth;
+        
+        star.style.cssText = `
+            position: absolute;
+            width: ${size}px;
+            height: ${size}px;
+            background: ${color};
+            border-radius: 50%;
+            left: ${Math.random() * 100}%;
+            top: ${Math.random() * 100}%;
+            opacity: ${Math.random() * 0.7 + 0.3};
+            box-shadow: 0 0 ${size * 2}px ${color};
+            transition: transform 0.1s ease-out;
+        `;
+        
+        if (Math.random() > 0.7) {
+            star.style.animation = `twinkle ${Math.random() * 3 + 2}s infinite`;
+        }
+        
+        container.appendChild(star);
+    }
+    
+    if (!document.getElementById('stars-style')) {
+        const style = document.createElement('style');
+        style.id = 'stars-style';
+        style.textContent = `
+            @keyframes twinkle {
+                0%, 100% { opacity: 0.3; }
+                50% { opacity: 1; }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+}
 
 // ── MATIAS: Countdown al próximo show ───────────────────────
 
