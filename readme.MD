@@ -6,9 +6,9 @@
 **Interstellar RockDevs** es una plataforma web con temática "Espacial" diseñada para presentar a una banda de rock conformada por desarrolladores de software. El objetivo del trabajo práctico es aplicar conceptos de maquetación responsive, metodologías CSS (BEM) y renderizado dinámico del DOM junto con Javascript. Las funcionalidades básicas incluyen un reproductor de audio integrado con animaciones CSS sincronizadas, una bitácora de desarrollo generada dinámicamente y perfiles de usuario que cargan información específica desde un objeto JSON simulado a través de parámetros de URL, incluyendo interacciones personalizadas (parallax, typewriters, contadores) para cada integrante.
 
 ## Integrantes
-* **Ayelen** | [Perfil de GitHub](https://github.com/ayecristi)
-* **Lucio** | [Perfil de GitHub](https://github.com/luciograma)
-* **Matias** | [Perfil de GitHub](https://github.com/matias-estanqueiro)
+* **Ayelén Cristi** | [Perfil de GitHub](https://github.com/ayecristi)
+* **Lucio Gramaccioni** | [Perfil de GitHub](https://github.com/luciograma)
+* **Matias Afonso Estanqueiro** | [Perfil de GitHub](https://github.com/matias-estanqueiro)
 
 ![Captura de pantalla: Sección "The Crew" (integrantes) en su versión desktop, donde se ven las imágenes que representan a cada miembro del equipo](readme_img/members_all_image.png)
 
